@@ -1,0 +1,6 @@
+node_modules/
+.wrangler/
+.dev.vars
+# Full Bible source files are large; `npm run build:verses` downloads them.
+sources/*.sql
+sources/*.zip

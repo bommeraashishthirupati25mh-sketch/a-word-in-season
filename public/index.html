@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>A Word in Season — Scripture for every occasion</title>
+  <meta name="description" content="Bible verses, prayers and talking points for birthdays, weddings, baptisms, funerals and every church occasion — in English, Hindi and Telugu.">
+  <meta name="theme-color" content="#7a2e2e">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600&family=Noto+Sans+Telugu:wght@400;600&family=Noto+Sans:wght@400;600&family=Noto+Serif+Devanagari:wght@400;600&family=Noto+Serif+Telugu:wght@400;600&family=Noto+Serif:ital,wght@0,400;0,600;1,400&display=swap">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script type="module" src="/js/app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#/">
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 5v22M9 12h14" /></svg>
+        <span class="brand-name" data-t="title">A Word in Season</span>
+      </a>
+      <nav class="nav">
+        <a href="#/" data-t="occasions">Occasions</a>
+        <a href="#/saved" data-t="saved">Saved</a>
+        <a href="#/about" data-t="about">About</a>
+      </nav>
+      <label class="site-lang">
+        <span class="sr-only" data-t="siteLang">Site language</span>
+        <select id="site-lang" aria-label="Site language">
+          <option value="en">English</option>
+          <option value="hi">हिंदी</option>
+          <option value="te">తెలుగు</option>
+        </select>
+      </label>
+    </div>
+  </header>
+
+  <main id="view" class="wrap" tabindex="-1">
+    <p class="loading">Loading…</p>
+  </main>
+
+  <footer class="footer wrap">
+    <p>English: King James Version (public domain). Hindi &amp; Telugu: Indian Revised Version © Bridge Connectivity Solutions, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>, via <a href="https://ebible.org">eBible.org</a>. <a href="#/about">Credits</a></p>
+  </footer>
+
+  <div id="podium" class="podium" hidden></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

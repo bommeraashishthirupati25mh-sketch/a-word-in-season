@@ -1,0 +1,15 @@
+{
+  "name": "a-word-in-season",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bible verses, prayers and talking points for every church occasion — English, Hindi, Telugu.",
+  "type": "module",
+  "scripts": {
+    "build:verses": "node scripts/build-verses.mjs",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.40.0"
+  }
+}
