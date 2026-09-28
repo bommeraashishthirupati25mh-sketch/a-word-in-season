@@ -5,11 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>A Word in Season — Scripture for every occasion</title>
   <meta name="description" content="Bible verses, prayers and talking points for birthdays, weddings, baptisms, funerals and every church occasion — in English, Hindi and Telugu.">
-  <meta name="theme-color" content="#7a2e2e">
+  <meta name="theme-color" content="#faf6ef" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#15110d" media="(prefers-color-scheme: dark)">
+  <link rel="manifest" href="/manifest.webmanifest">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Word in Season">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600&family=Noto+Sans+Telugu:wght@400;600&family=Noto+Sans:wght@400;600&family=Noto+Serif+Devanagari:wght@400;600&family=Noto+Serif+Telugu:wght@400;600&family=Noto+Serif:ital,wght@0,400;0,600;1,400&display=swap">
+  <!-- Serif faces for scripture only; interface text uses the phone's own fonts (which cover Hindi and Telugu). -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;600&family=Noto+Serif+Telugu:wght@400;600&family=Noto+Serif:ital,wght@0,400;0,600;1,400&display=swap">
   <link rel="stylesheet" href="/css/styles.css">
   <script type="module" src="/js/app.js"></script>
 </head>
@@ -20,17 +28,30 @@
         <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 5v22M9 12h14" /></svg>
         <span class="brand-name" data-t="title">A Word in Season</span>
       </a>
-      <nav class="nav">
-        <a href="#/" data-t="occasions">Occasions</a>
-        <a href="#/saved" data-t="saved">Saved</a>
-        <a href="#/about" data-t="about">About</a>
+      <nav class="nav" aria-label="Main">
+        <a href="#/" data-route="home">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2Zm0 0A2 2 0 0 0 6 22h13"/><path d="M12 7v6M9 9.5h6"/></svg>
+          <span data-t="occasions">Occasions</span>
+        </a>
+        <a href="#/saved" data-route="saved">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z"/></svg>
+          <span data-t="saved">Saved</span>
+        </a>
+        <a href="#/about" data-route="about">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></svg>
+          <span data-t="about">About</span>
+        </a>
       </nav>
+      <button id="install-btn" class="install-btn" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-4-4m4 4 4-4M5 21h14"/></svg>
+        <span data-t="install">Install</span>
+      </button>
       <label class="site-lang">
         <span class="sr-only" data-t="siteLang">Site language</span>
         <select id="site-lang" aria-label="Site language">
-          <option value="en">English</option>
-          <option value="hi">हिंदी</option>
-          <option value="te">తెలుగు</option>
+          <option value="en">EN</option>
+          <option value="hi">हिं</option>
+          <option value="te">తెలు</option>
         </select>
       </label>
     </div>

@@ -4,3 +4,4 @@ node_modules/
 # Full Bible source files are large; `npm run build:verses` downloads them.
 sources/*.sql
 sources/*.zip
+.claude/

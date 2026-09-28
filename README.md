@@ -11,6 +11,21 @@ Bible verses, an opening prayer, talking points and a closing blessing for every
 - **Three languages**, shown alone or side by side (KJV, Hindi IRV, Telugu IRV); site interface in all three
 - **Podium mode**: large type that auto-fits the screen, tap/swipe/arrow keys or a presentation clicker, `B` to blank the screen, `+`/`−` text size, light/dark, keeps the phone screen awake
 - Copy, share (WhatsApp / phone share sheet), save favourites on the device, search in any language, verse of the day
+- **Built for phones**: bottom tab bar, large tap targets, floating *Present all* button, adjustable reading size
+- **Installable app (PWA)** that works fully **offline** after the first visit — handy in church halls with poor signal
+
+## Installing on a phone
+
+- **Android (Chrome)**: open the site and tap the **Install** (⬇) button in the header, or ⋮ → *Install app*.
+- **iPhone (Safari)**: tap **Share** → **Add to Home Screen**. The site shows this hint once.
+
+Once installed it opens full-screen from its own icon and needs no internet. When a new version is published, the app shows *“A new version is ready — Update”*.
+
+## Publishing an update
+
+Push to `main` and Cloudflare redeploys. Installed copies pick up changed files automatically in the background. If you change the list of files the app needs offline, update `APP_SHELL` in `public/sw.js` and bump its `VERSION`.
+
+Icons are drawn by `node scripts/make-icons.mjs` (no image tools needed).
 
 ## Project layout
 

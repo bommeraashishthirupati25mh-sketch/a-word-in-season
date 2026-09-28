@@ -28,6 +28,7 @@ const state = {
   saved: store.get("saved", []),
   zoom: store.get("zoom", 1),
   podiumLight: store.get("podiumLight", false),
+  read: store.get("read", 1),
   tab: "verses",
   query: "",
 };
@@ -109,7 +110,15 @@ function langTogglesHTML() {
           (l) => `<button data-lang="${l}" aria-pressed="${state.langs.includes(l)}" lang="${l}">${LANGS[l].label}</button>`
         ).join("")}
       </div>
+      <div class="toggles text-size" role="group" aria-label="${esc(tr("textSize"))}">
+        <button data-read="-1" aria-label="${esc(tr("smaller"))}">A−</button>
+        <button data-read="1" aria-label="${esc(tr("bigger"))}">A+</button>
+      </div>
     </div>`;
+}
+
+function applyReadSize() {
+  document.documentElement.style.setProperty("--read", state.read);
 }
 
 function dayIndex(n) {
@@ -229,7 +238,7 @@ function renderOccasion(id) {
           </ol>
           <h3>${tr("blessing")}</h3>
           <div class="verse" data-ref="${esc(o.kit.blessing)}">
-            <p class="verse-ref">${esc(VERSES[o.kit.blessing].ref[state.langs[0]])}</p>
+            <p class="verse-ref">${esc(VERSES[o.kit.blessing]?.ref[state.langs[0]] ?? o.kit.blessing)}</p>
             ${state.langs.map((l) => verseTextHTML(o.kit.blessing, l)).join("")}
             <div class="icon-row">
               <button class="icon-btn" data-act="copy">${ICONS.copy}${tr("copy")}</button>
@@ -280,11 +289,10 @@ function renderNotFound() {
 function route() {
   const hash = location.hash.replace(/^#/, "") || "/";
   const [, section, id] = hash.split("/");
+  const current = !section || section === "o" ? "home" : section;
   document.querySelectorAll(".nav a").forEach((a) => {
-    const target = a.getAttribute("href").replace(/^#/, "");
-    const active = target === "/" ? section === "" || section === "o" : hash.startsWith(target);
-    a.toggleAttribute("aria-current", active);
-    if (active) a.setAttribute("aria-current", "page");
+    if (a.dataset.route === current) a.setAttribute("aria-current", "page");
+    else a.removeAttribute("aria-current");
   });
   if (!section) renderHome();
   else if (section === "o") renderOccasion(id);
@@ -308,12 +316,25 @@ function applyUiLang() {
 
 // ---------- Actions ----------
 let toastTimer;
-function toast(msg) {
+// A toast with an `action` ({ label, run }) stays until tapped or dismissed.
+function toast(msg, action) {
   const el = $("#toast");
   el.textContent = msg;
+  el.classList.toggle("has-action", Boolean(action));
+  if (action) {
+    const go = document.createElement("button");
+    go.textContent = action.label;
+    go.onclick = () => { el.classList.remove("show"); action.run(); };
+    const x = document.createElement("button");
+    x.textContent = "✕";
+    x.className = "toast-x";
+    x.setAttribute("aria-label", tr("dismiss"));
+    x.onclick = () => el.classList.remove("show");
+    el.append(go, x);
+  }
   el.classList.add("show");
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => el.classList.remove("show"), 1800);
+  if (!action) toastTimer = setTimeout(() => el.classList.remove("show"), 2200);
 }
 
 async function copyText(text) {
@@ -351,6 +372,12 @@ document.addEventListener("click", (ev) => {
     state.langs = LANG_ORDER.filter((x) => (x === l ? !on : state.langs.includes(x)));
     store.set("langs", state.langs);
     return rerender();
+  }
+  const readBtn = ev.target.closest("[data-read]");
+  if (readBtn) {
+    state.read = Math.round(Math.min(1.5, Math.max(0.85, state.read + 0.1 * readBtn.dataset.read)) * 100) / 100;
+    store.set("read", state.read);
+    return applyReadSize();
   }
   const tabBtn = ev.target.closest("[data-tab]");
   if (tabBtn && tabBtn.tagName === "BUTTON") {
@@ -589,6 +616,7 @@ const podium = (() => {
 // ---------- Boot ----------
 async function boot() {
   applyUiLang();
+  applyReadSize();
   try {
     const res = await fetch("/data/verses.json");
     if (!res.ok) throw new Error(res.status);
@@ -603,5 +631,44 @@ async function boot() {
     window.scrollTo(0, 0);
   });
   route();
+  setupPwa();
 }
+
+// ---------- Installable app / offline ----------
+function setupPwa() {
+  const secure = location.protocol === "https:" || location.hostname === "localhost";
+  if ("serviceWorker" in navigator && secure) {
+    navigator.serviceWorker.register("/sw.js").catch(() => {});
+    navigator.serviceWorker.addEventListener("message", (e) => {
+      if (e.data?.type === "update-ready") toast(tr("updateReady"), { label: tr("reload"), run: () => location.reload() });
+    });
+  }
+
+  const standalone = matchMedia("(display-mode: standalone)").matches || navigator.standalone;
+  const btn = $("#install-btn");
+  let deferred = null;
+  window.addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault();
+    deferred = e;
+    btn.hidden = false;
+  });
+  btn.addEventListener("click", async () => {
+    if (!deferred) return;
+    deferred.prompt();
+    await deferred.userChoice.catch(() => {});
+    deferred = null;
+    btn.hidden = true;
+  });
+  window.addEventListener("appinstalled", () => (btn.hidden = true));
+
+  // iPhone/iPad Safari has no install prompt — show the manual steps once.
+  const ios = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  if (ios && !standalone && !store.get("iosHintShown", false)) {
+    store.set("iosHintShown", true);
+    setTimeout(() => toast(tr("iosInstall"), { label: "OK", run: () => {} }), 2500);
+  }
+
+  window.addEventListener("offline", () => toast(tr("offline")));
+}
+
 boot();

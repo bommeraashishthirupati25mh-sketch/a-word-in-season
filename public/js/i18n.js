@@ -56,6 +56,21 @@ const T = {
     te: "అంచులపై నొక్కండి లేదా బాణం కీలు · B తో స్క్రీన్ ఖాళీ · Esc తో మూసివేయి",
   },
   notFound: { en: "Page not found.", hi: "पेज नहीं मिला।", te: "పేజీ కనబడలేదు." },
+  install: { en: "Install", hi: "इंस्टॉल", te: "ఇన్‌స్టాల్" },
+  iosInstall: {
+    en: "Install this app: tap Share, then “Add to Home Screen”.",
+    hi: "ऐप इंस्टॉल करें: Share दबाएँ, फिर “Add to Home Screen” चुनें।",
+    te: "యాప్ ఇన్‌స్టాల్ చేయండి: Share నొక్కి, “Add to Home Screen” ఎంచుకోండి.",
+  },
+  updateReady: { en: "A new version is ready.", hi: "नया संस्करण तैयार है।", te: "కొత్త వెర్షన్ సిద్ధంగా ఉంది." },
+  reload: { en: "Update", hi: "अपडेट करें", te: "అప్‌డేట్" },
+  dismiss: { en: "Dismiss", hi: "हटाएँ", te: "తీసివేయి" },
+  offline: {
+    en: "You're offline — everything still works.",
+    hi: "आप ऑफ़लाइन हैं — सब कुछ फिर भी चलेगा।",
+    te: "మీరు ఆఫ్‌లైన్‌లో ఉన్నారు — అన్నీ పని చేస్తాయి.",
+  },
+  textSize: { en: "Text size", hi: "अक्षर का आकार", te: "అక్షర పరిమాణం" },
 };
 
 export function t(key, lang) {

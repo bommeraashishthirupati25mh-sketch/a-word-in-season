@@ -14,7 +14,9 @@
   --radius: 14px;
 
   --serif: "Noto Serif", "Noto Serif Devanagari", "Noto Serif Telugu", Georgia, serif;
-  --sans: "Noto Sans", "Noto Sans Devanagari", "Noto Sans Telugu", system-ui, sans-serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Noto Sans Devanagari", "Noto Sans Telugu", sans-serif;
+  --read: 1;
+  --nav-h: 0px;
   color-scheme: light;
 }
 
@@ -46,8 +48,8 @@ body {
   display: flex;
   flex-direction: column;
 }
-:lang(hi) { font-family: "Noto Sans Devanagari", var(--sans); }
-:lang(te) { font-family: "Noto Sans Telugu", var(--sans); }
+body { -webkit-tap-highlight-color: transparent; }
+a, button, select, input, summary { touch-action: manipulation; }
 
 a { color: var(--accent); }
 a:hover { color: var(--accent-hover); }
@@ -73,16 +75,38 @@ main { flex: 1; padding-top: 24px; padding-bottom: 48px; outline: none; }
 .brand-mark path { stroke: var(--accent-ink); stroke-width: 3.2; stroke-linecap: round; fill: none; }
 .brand-name { font-family: var(--serif); font-weight: 600; font-size: 1.15rem; letter-spacing: 0.01em; }
 .nav { display: flex; gap: 4px; }
-.nav a { text-decoration: none; color: var(--muted); padding: 8px 10px; border-radius: 8px; font-size: 0.95rem; }
+.nav a { text-decoration: none; color: var(--muted); padding: 8px 10px; border-radius: 8px; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 6px; }
+.nav svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.install-btn {
+  display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--accent); color: var(--accent); background: transparent;
+  border-radius: 999px; padding: 6px 12px; font-weight: 600; font-size: 0.9rem; cursor: pointer;
+}
+.install-btn[hidden] { display: none; }
+.install-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
 .nav a:hover, .nav a[aria-current="page"] { color: var(--ink); background: var(--surface-2); }
 .site-lang select {
   background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px;
 }
-@media (max-width: 640px) {
-  .topbar-inner { flex-wrap: wrap; gap: 8px; padding-top: 8px; padding-bottom: 8px; }
-  .nav { order: 3; width: 100%; justify-content: space-between; }
-  .nav a { flex: 1; text-align: center; }
+/* Phones: navigation moves to a bottom tab bar within thumb reach. */
+@media (max-width: 720px) {
+  :root { --nav-h: calc(60px + env(safe-area-inset-bottom)); }
+  body { padding-bottom: var(--nav-h); }
+  /* backdrop-filter would trap the fixed tab bar inside the header. */
+  .topbar { backdrop-filter: none; background: var(--bg); }
+  .topbar-inner { min-height: 54px; gap: 10px; padding-top: env(safe-area-inset-top); }
   .brand-name { font-size: 1.05rem; }
+  .nav {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; height: var(--nav-h);
+    padding-bottom: env(safe-area-inset-bottom); gap: 0;
+    background: color-mix(in srgb, var(--surface) 94%, transparent); backdrop-filter: blur(12px);
+    border-top: 1px solid var(--line);
+  }
+  .nav a { flex: 1; flex-direction: column; justify-content: center; gap: 2px; border-radius: 0; font-size: 0.75rem; padding: 6px 4px; }
+  .nav a:hover { background: none; }
+  .nav a[aria-current="page"] { background: none; color: var(--accent); font-weight: 600; }
+  .nav svg { width: 24px; height: 24px; }
+  .install-btn span { display: none; }
+  .install-btn { padding: 8px; }
 }
 
 /* Home */
@@ -160,7 +184,7 @@ main { flex: 1; padding-top: 24px; padding-bottom: 48px; outline: none; }
 }
 .verse-ref { font-weight: 600; color: var(--accent); margin: 0 0 8px; font-size: 0.98rem; display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; }
 .verse-ref .alt { color: var(--muted); font-weight: 400; font-size: 0.88rem; }
-.verse-text { font-family: var(--serif); font-size: 1.12rem; line-height: 1.7; margin: 0 0 10px; }
+.verse-text { font-family: var(--serif); font-size: calc(1.12rem * var(--read)); line-height: 1.7; margin: 0 0 10px; }
 .verse-text:lang(hi) { font-family: "Noto Serif Devanagari", var(--serif); }
 .verse-text:lang(te) { font-family: "Noto Serif Telugu", var(--serif); line-height: 1.85; }
 .verse-text + .verse-text { padding-top: 10px; border-top: 1px dashed var(--line); }
@@ -185,7 +209,7 @@ main { flex: 1; padding-top: 24px; padding-bottom: 48px; outline: none; }
 .kit-note { font-size: 0.85rem; color: var(--muted); margin: 0 0 8px; }
 .kit h3 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold); margin: 20px 0 8px; }
 .kit h3:first-of-type { margin-top: 12px; }
-.prayer { font-family: var(--serif); font-style: italic; line-height: 1.7; margin: 0; }
+.prayer { font-family: var(--serif); font-style: italic; line-height: 1.7; margin: 0; font-size: calc(1rem * var(--read)); }
 .points { list-style: none; margin: 0; padding: 0; counter-reset: pt; display: flex; flex-direction: column; gap: 12px; }
 .points li { counter-increment: pt; padding-left: 34px; position: relative; }
 .points li::before {
@@ -196,7 +220,7 @@ main { flex: 1; padding-top: 24px; padding-bottom: 48px; outline: none; }
 .points p { margin: 2px 0 0; color: var(--muted); font-size: 0.95rem; }
 .points .pt-ref { font-size: 0.85rem; }
 .kit .verse { padding: 0; border: 0; background: none; }
-.kit .verse-text { font-size: 1.02rem; }
+.kit .verse-text { font-size: calc(1.02rem * var(--read)); }
 
 /* Saved / about */
 .empty { color: var(--muted); background: var(--surface); border: 1px dashed var(--line); border-radius: var(--radius); padding: 28px; text-align: center; }
@@ -208,11 +232,15 @@ main { flex: 1; padding-top: 24px; padding-bottom: 48px; outline: none; }
 .footer a { color: var(--muted); }
 
 .toast {
-  position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 20px); opacity: 0; pointer-events: none;
+  display: flex; align-items: center; gap: 12px; max-width: calc(100vw - 32px); width: max-content;
+  position: fixed; left: 50%; bottom: calc(var(--nav-h) + 16px); transform: translate(-50%, 20px); opacity: 0; pointer-events: none;
   background: var(--ink); color: var(--bg); padding: 10px 18px; border-radius: 999px; font-size: 0.95rem;
   transition: opacity 0.2s, transform 0.2s; z-index: 100;
 }
-.toast.show { opacity: 1; transform: translate(-50%, 0); }
+.toast.show { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+.toast.has-action { border-radius: 14px; padding: 10px 10px 10px 16px; }
+.toast button { background: var(--accent); color: var(--accent-ink); border: 0; border-radius: 999px; padding: 8px 14px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+.toast .toast-x { background: transparent; color: inherit; padding: 8px; opacity: 0.7; }
 
 /* Podium mode */
 .podium {
@@ -265,3 +293,58 @@ main { flex: 1; padding-top: 24px; padding-bottom: 48px; outline: none; }
 .p-points { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 2.4vh; }
 .p-points .p-text { font-size: calc(var(--base) * 0.8 * var(--zoom, 1) * var(--fit, 1)); }
 .p-points small { display: block; font-family: var(--sans); color: var(--p-muted); font-size: 0.55em; margin-top: 0.4em; }
+
+/* ---------- Phone refinements ---------- */
+.text-size button { min-width: 44px; font-weight: 600; }
+@media (max-width: 720px) {
+  main { padding-top: 16px; }
+  .hero { padding-top: 12px; }
+  .hero h1 { font-size: 2rem; }
+  .motto { font-size: 0.95rem; margin-bottom: 18px; }
+  .votd { padding: 16px; margin-top: 20px; }
+  .section-title { margin-top: 28px; }
+  .occ-card { min-height: 112px; }
+  .occ-card:hover { transform: none; }
+
+  .toolbar { gap: 8px; }
+  .toolbar-label { width: 100%; }
+  .toolbar .toggles:not(.text-size) { flex: 1; }
+  .toolbar .toggles:not(.text-size) button { flex: 1; padding: 9px 6px; }
+  .toggles button { min-height: 40px; }
+
+  /* Verses / kit switch stays reachable while scrolling. */
+  .tabs {
+    position: sticky; top: 62px; z-index: 5; display: flex; width: 100%;
+    box-shadow: 0 0 0 6px var(--bg);
+  }
+  .tabs button { flex: 1; }
+
+  .verse { padding: 16px 16px 6px; }
+  .verse-text { line-height: 1.75; }
+
+  /* Big, evenly spaced actions: icon above label. */
+  .verse .icon-row { display: grid; grid-template-columns: repeat(4, 1fr); margin: 4px -8px 0; }
+  .kit .icon-row { display: flex; }
+  .verse .icon-row .icon-btn { flex-direction: column; gap: 3px; min-height: 52px; font-size: 0.72rem; justify-content: center; }
+  .verse .icon-row .icon-btn svg { width: 22px; height: 22px; }
+
+  /* "Present all" floats above the tab bar. */
+  .occ-head .actions { margin: 0; }
+  .occ-head .actions .btn {
+    position: fixed; right: 16px; bottom: calc(var(--nav-h) + 16px); z-index: 15;
+    box-shadow: 0 6px 20px rgb(0 0 0 / 25%); padding: 14px 20px;
+  }
+  .verse-list, .kit { padding-bottom: 72px; }
+  .footer { padding-bottom: 16px; }
+}
+
+/* Phone held sideways in podium mode: give the text the room. */
+@media (max-height: 500px) {
+  .p-bar, .p-foot { padding-top: 4px; padding-bottom: 4px; }
+  .p-nav { height: 40px; }
+  .p-nav span { display: none; }
+  .p-help { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}
