@@ -2,11 +2,14 @@
 // Verse text is never written here — it is pulled from the source Bibles by
 // scripts/build-verses.mjs into public/data/verses.json, keyed by reference.
 // References use USFM book codes: "JHN 3:16", "1CO 13:4-7".
+// `id` is the page's URL slug (/occasions/<id>); `about` completes "Bible verses for …".
 
 export const OCCASIONS = [
   {
     id: "birthday",
     icon: "🎂",
+    about: "birthdays",
+    related: ["wedding-anniversary","baby-dedication","thanksgiving-and-harvest"],
     name: { en: "Birthday", hi: "जन्मदिन", te: "పుట్టినరోజు" },
     tags: ["birthday", "life", "years", "age", "blessing", "celebration"],
     verses: ["PSA 118:24", "PSA 139:13-14", "JER 29:11", "LAM 3:22-23", "PSA 90:12", "PRO 3:5-6", "ISA 46:4", "PSA 20:4", "PSA 91:16", "NUM 6:24-26"],
@@ -24,6 +27,8 @@ export const OCCASIONS = [
   {
     id: "wedding",
     icon: "💍",
+    about: "weddings",
+    related: ["engagement","wedding-anniversary","housewarming"],
     name: { en: "Wedding", hi: "विवाह", te: "వివాహం" },
     tags: ["wedding", "marriage", "love", "husband", "wife", "union", "couple"],
     verses: ["GEN 2:24", "1CO 13:4-7", "ECC 4:9-12", "MRK 10:9", "COL 3:14", "EPH 4:2-3", "EPH 5:25", "RUT 1:16", "SNG 8:7", "PRO 18:22", "PSA 127:1", "1JN 4:7"],
@@ -41,6 +46,8 @@ export const OCCASIONS = [
   {
     id: "engagement",
     icon: "🤝",
+    about: "engagements",
+    related: ["wedding","wedding-anniversary"],
     name: { en: "Engagement", hi: "सगाई", te: "నిశ్చితార్థం" },
     tags: ["engagement", "betrothal", "promise", "future", "couple"],
     verses: ["PRO 19:14", "AMO 3:3", "SNG 8:6", "PSA 37:4-5", "PRO 3:5-6", "ROM 12:10", "1CO 16:14", "PHP 1:6"],
@@ -56,8 +63,10 @@ export const OCCASIONS = [
     },
   },
   {
-    id: "anniversary",
+    id: "wedding-anniversary",
     icon: "💞",
+    about: "wedding anniversaries",
+    related: ["wedding","birthday","thanksgiving-and-harvest"],
     name: { en: "Wedding Anniversary", hi: "विवाह वर्षगांठ", te: "వివాహ వార్షికోత్సవం" },
     tags: ["anniversary", "marriage", "faithfulness", "years", "couple", "love"],
     verses: ["1SA 7:12", "LAM 3:22-23", "PSA 126:3", "ECC 9:9", "PRO 31:10-11", "COL 3:12-14", "1CO 13:7-8", "JOS 24:15", "PSA 90:17"],
@@ -75,6 +84,8 @@ export const OCCASIONS = [
   {
     id: "baptism",
     icon: "🕊️",
+    about: "baptism services",
+    related: ["baby-dedication","ordination-and-ministry","good-friday-and-easter"],
     name: { en: "Baptism", hi: "बपतिस्मा", te: "బాప్తిస్మం" },
     tags: ["baptism", "new life", "faith", "salvation", "water", "confession"],
     verses: ["MAT 28:19-20", "ROM 6:4", "ACT 2:38", "GAL 3:27", "2CO 5:17", "COL 2:12", "ACT 8:38", "ACT 22:16", "MAT 3:16-17", "1PE 3:21"],
@@ -90,8 +101,10 @@ export const OCCASIONS = [
     },
   },
   {
-    id: "dedication",
+    id: "baby-dedication",
     icon: "👶",
+    about: "baby dedications",
+    related: ["baptism","birthday"],
     name: { en: "Baby Dedication", hi: "शिशु समर्पण", te: "శిశు సమర్పణ" },
     tags: ["baby", "child", "dedication", "newborn", "naming", "parents", "children"],
     verses: ["1SA 1:27-28", "PSA 127:3", "PSA 139:13-14", "MRK 10:14", "PRO 22:6", "JER 1:5", "LUK 2:52", "DEU 6:6-7", "ISA 54:13", "NUM 6:24-26"],
@@ -107,8 +120,10 @@ export const OCCASIONS = [
     },
   },
   {
-    id: "funeral",
+    id: "funeral-and-comfort",
     icon: "🕯️",
+    about: "funerals and times of grief",
+    related: ["healing-and-sickness","farewell-and-travel","good-friday-and-easter"],
     name: { en: "Funeral & Comfort", hi: "अंतिम संस्कार व सांत्वना", te: "అంత్యక్రియలు & ఓదార్పు" },
     tags: ["funeral", "death", "grief", "comfort", "condolence", "memorial", "loss", "heaven", "hope"],
     verses: ["JHN 11:25-26", "JHN 14:1-3", "PSA 23:1-4", "REV 21:4", "1TH 4:13-14", "MAT 5:4", "PSA 34:18", "ROM 8:38-39", "2CO 5:1", "2TI 4:7-8", "PSA 116:15", "ISA 41:10"],
@@ -126,6 +141,8 @@ export const OCCASIONS = [
   {
     id: "housewarming",
     icon: "🏠",
+    about: "housewarmings and new homes",
+    related: ["wedding","new-job-and-business","thanksgiving-and-harvest"],
     name: { en: "Housewarming", hi: "गृह प्रवेश", te: "గృహ ప్రవేశం" },
     tags: ["housewarming", "new home", "house", "family", "dedication of home"],
     verses: ["JOS 24:15", "PSA 127:1", "PRO 24:3-4", "ISA 32:18", "LUK 10:5", "PSA 121:8", "2SA 7:29", "NUM 6:24-26"],
@@ -141,8 +158,10 @@ export const OCCASIONS = [
     },
   },
   {
-    id: "students",
+    id: "exams-and-graduation",
     icon: "🎓",
+    about: "exams and graduations",
+    related: ["new-job-and-business","farewell-and-travel","new-year"],
     name: { en: "Exams & Graduation", hi: "परीक्षा व दीक्षांत", te: "పరీక్షలు & పట్టభద్రత" },
     tags: ["exam", "exams", "graduation", "student", "school", "college", "study", "wisdom", "results"],
     verses: ["PRO 1:7", "JAS 1:5", "PHP 4:13", "PRO 16:3", "COL 3:23", "PSA 32:8", "JER 29:11", "ISA 40:31", "2TI 2:15", "DAN 1:17"],
@@ -158,8 +177,10 @@ export const OCCASIONS = [
     },
   },
   {
-    id: "work",
+    id: "new-job-and-business",
     icon: "💼",
+    about: "a new job or business",
+    related: ["housewarming","exams-and-graduation","thanksgiving-and-harvest"],
     name: { en: "New Job & Business", hi: "नई नौकरी व व्यवसाय", te: "కొత్త ఉద్యోగం & వ్యాపారం" },
     tags: ["job", "work", "business", "shop", "career", "opening", "promotion", "provision"],
     verses: ["PRO 16:3", "DEU 8:18", "COL 3:23-24", "PSA 90:17", "PSA 1:3", "MAT 6:33", "PRO 3:9-10", "JOS 1:9", "PHP 4:19"],
@@ -175,8 +196,10 @@ export const OCCASIONS = [
     },
   },
   {
-    id: "farewell",
+    id: "farewell-and-travel",
     icon: "✈️",
+    about: "farewells and journeys",
+    related: ["new-job-and-business","exams-and-graduation","funeral-and-comfort"],
     name: { en: "Farewell & Travel", hi: "विदाई व यात्रा", te: "వీడ్కోలు & ప్రయాణం" },
     tags: ["farewell", "goodbye", "travel", "journey", "abroad", "moving", "send-off", "retirement"],
     verses: ["NUM 6:24-26", "PSA 121:7-8", "GEN 28:15", "JOS 1:9", "DEU 31:8", "ISA 43:2", "PHP 1:3-6", "ACT 20:32", "2CO 13:11", "3JN 1:2"],
@@ -192,8 +215,10 @@ export const OCCASIONS = [
     },
   },
   {
-    id: "healing",
+    id: "healing-and-sickness",
     icon: "🙏",
+    about: "healing and times of sickness",
+    related: ["funeral-and-comfort","thanksgiving-and-harvest"],
     name: { en: "Healing & Sickness", hi: "चंगाई", te: "స్వస్థత" },
     tags: ["healing", "sick", "sickness", "hospital", "illness", "recovery", "surgery", "health"],
     verses: ["JAS 5:14-15", "JER 17:14", "ISA 53:5", "PSA 103:2-3", "EXO 15:26", "PSA 41:3", "JER 30:17", "MAT 11:28", "2CO 12:9", "3JN 1:2"],
@@ -209,8 +234,10 @@ export const OCCASIONS = [
     },
   },
   {
-    id: "ministry",
+    id: "ordination-and-ministry",
     icon: "📖",
+    about: "ordinations and ministry commissioning",
+    related: ["baptism","farewell-and-travel"],
     name: { en: "Ordination & Ministry", hi: "सेवकाई अभिषेक", te: "సేవా అభిషేకం" },
     tags: ["ordination", "ministry", "pastor", "elder", "deacon", "commissioning", "calling", "mission"],
     verses: ["ISA 6:8", "JER 1:7-8", "2TI 4:2", "1TI 4:12", "ACT 20:28", "1PE 5:2-4", "EPH 4:11-12", "ISA 61:1", "2TI 2:15", "MAT 28:19-20"],
@@ -226,8 +253,10 @@ export const OCCASIONS = [
     },
   },
   {
-    id: "thanksgiving",
+    id: "thanksgiving-and-harvest",
     icon: "🌾",
+    about: "thanksgiving and harvest festivals",
+    related: ["new-year","christmas","housewarming"],
     name: { en: "Thanksgiving & Harvest", hi: "धन्यवाद व फसल पर्व", te: "కృతజ్ఞతార్పణ & పంట పండుగ" },
     tags: ["thanksgiving", "harvest", "gratitude", "praise", "thanks", "festival"],
     verses: ["PSA 100:4-5", "1TH 5:16-18", "PSA 107:1", "PSA 103:1-2", "PSA 136:1", "JAS 1:17", "COL 3:17", "PSA 65:11", "2CO 9:15", "PHP 4:6"],
@@ -245,6 +274,8 @@ export const OCCASIONS = [
   {
     id: "christmas",
     icon: "⭐",
+    about: "Christmas",
+    related: ["new-year","good-friday-and-easter","thanksgiving-and-harvest"],
     name: { en: "Christmas", hi: "क्रिसमस", te: "క్రిస్మస్" },
     tags: ["christmas", "birth of jesus", "nativity", "advent", "saviour", "emmanuel"],
     verses: ["ISA 9:6", "LUK 2:10-11", "MAT 1:23", "JHN 1:14", "LUK 2:14", "MIC 5:2", "ISA 7:14", "GAL 4:4-5", "JHN 3:16", "1JN 4:9"],
@@ -260,8 +291,10 @@ export const OCCASIONS = [
     },
   },
   {
-    id: "easter",
+    id: "good-friday-and-easter",
     icon: "✝️",
+    about: "Good Friday and Easter",
+    related: ["christmas","baptism","funeral-and-comfort"],
     name: { en: "Good Friday & Easter", hi: "गुड फ्राइडे व ईस्टर", te: "గుడ్ ఫ్రైడే & ఈస్టర్" },
     tags: ["easter", "good friday", "cross", "resurrection", "passion", "risen", "salvation"],
     verses: ["ISA 53:5", "ROM 5:8", "JHN 19:30", "1PE 2:24", "MAT 28:5-6", "LUK 24:6", "1CO 15:3-4", "1CO 15:55-57", "ROM 6:9", "JHN 11:25"],
@@ -277,8 +310,10 @@ export const OCCASIONS = [
     },
   },
   {
-    id: "newyear",
+    id: "new-year",
     icon: "🎆",
+    about: "the New Year",
+    related: ["thanksgiving-and-harvest","birthday","christmas"],
     name: { en: "New Year", hi: "नया साल", te: "నూతన సంవత్సరం" },
     tags: ["new year", "beginning", "fresh start", "watch night", "resolution", "future"],
     verses: ["LAM 3:22-23", "ISA 43:18-19", "PHP 3:13-14", "DEU 11:12", "PRO 16:9", "PSA 65:11", "JER 29:11", "2CO 5:17", "REV 21:5", "PSA 90:12"],
@@ -308,3 +343,8 @@ export function allRefs() {
   }
   return [...set];
 }
+
+// Slugs used before clean URLs (old "#/o/<id>" links still redirect).
+export const LEGACY_IDS = {"anniversary":"wedding-anniversary","dedication":"baby-dedication","funeral":"funeral-and-comfort","students":"exams-and-graduation","work":"new-job-and-business","farewell":"farewell-and-travel","healing":"healing-and-sickness","ministry":"ordination-and-ministry","thanksgiving":"thanksgiving-and-harvest","easter":"good-friday-and-easter","newyear":"new-year"};
+
+export const occasionById = (id) => OCCASIONS.find((o) => o.id === id);

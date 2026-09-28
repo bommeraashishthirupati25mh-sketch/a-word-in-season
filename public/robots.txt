@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /saved
+
+Sitemap: https://a-word-in-season.rently-campus.workers.dev/sitemap.xml

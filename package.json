@@ -5,11 +5,17 @@
   "description": "Bible verses, prayers and talking points for every church occasion — English, Hindi, Telugu.",
   "type": "module",
   "scripts": {
+    "build": "node scripts/build-pages.mjs",
     "build:verses": "node scripts/build-verses.mjs",
+    "build:pages": "node scripts/build-pages.mjs",
+    "build:og": "node scripts/make-og.mjs",
+    "build:icons": "node scripts/make-icons.mjs",
     "dev": "wrangler dev",
-    "deploy": "wrangler deploy"
+    "deploy": "npm run build && wrangler deploy",
+    "check": "node scripts/check-site.mjs"
   },
   "devDependencies": {
-    "wrangler": "^4.40.0"
+    "wrangler": "^4.40.0",
+    "puppeteer-core": "^23.11.1"
   }
 }

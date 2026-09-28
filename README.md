@@ -4,6 +4,8 @@ Bible verses, an opening prayer, talking points and a closing blessing for every
 
 > “A word spoken in due season, how good is it!” — Proverbs 15:23
 
+*Lovingly built for Bro. Raj Timothy, Smyrna House of Fellowship.*
+
 ## Features
 
 - **17 occasions**, each with 8–12 hand-picked passages
@@ -30,24 +32,45 @@ Icons are drawn by `node scripts/make-icons.mjs` (no image tools needed).
 ## Project layout
 
 ```
-public/              ← the whole website (static, no build step)
-  index.html
+public/                  ← the deployed website (everything here is served as-is)
+  js/occasions.js        ← occasions, verse references, prayers, talking points  ✏️ edit here
+  js/i18n.js             ← interface text in en / hi / te
+  js/site.js             ← site address, dedication                            ✏️ edit here
+  js/views.js            ← page markup (used by the browser AND the page builder)
+  js/app.js              ← navigation, languages, theme, actions, offline
+  js/podium.js           ← podium mode (loaded on first use)
   css/styles.css
-  js/app.js          ← views, podium mode
-  js/occasions.js    ← occasions, verse references, prayers, talking points  ✏️ edit here
-  js/i18n.js         ← interface text in en / hi / te
-  data/verses.json   ← generated verse text (committed)
+  index.html, about.html, saved.html, 404.html, occasions/*.html   ← generated
+  data/verses-{en,hi,te}.json                                      ← generated
+  og/*.png, icons/*.png                                            ← generated
+  sitemap.xml, robots.txt, llms.txt, sw.js (precache list)         ← generated
 scripts/
-  build-verses.mjs   ← pulls exact verse text for every reference from the source Bibles
-  books.mjs          ← book names in all three languages
-wrangler.jsonc       ← Cloudflare Workers static-assets config
+  build-verses.mjs       ← exact verse text for every reference, from the source Bibles
+  build-pages.mjs        ← pre-renders every page + SEO files + service-worker list
+  make-og.mjs            ← social share images (needs Chrome)
+  make-icons.mjs         ← app icons
+  check-site.mjs         ← end-to-end checks in headless Chrome
+wrangler.jsonc           ← Cloudflare Workers static-assets config
 ```
+
+Generated files are committed, so Cloudflare needs no build step. **Don't edit the generated HTML by hand** — change the sources and rebuild.
+
+## SEO & quality
+
+Every page is pre-rendered HTML with a unique title, meta description, canonical URL, one `<h1>`, breadcrumbs, Open Graph/Twitter share image and schema.org structured data (WebSite, Church, CollectionPage with the verse list, BreadcrumbList). Clean URLs (`/occasions/wedding-anniversary`), a real 404 page, `sitemap.xml`, `robots.txt` and `llms.txt` are generated. Old `/#/o/…` links redirect.
+
+`npm run check` (with the site running locally, or `npm run check -- https://your-site`) verifies all of this on desktop and phone, plus zero console errors, working internal links, the theme toggle and offline mode.
 
 ## Adding or changing verses
 
 1. Edit `public/js/occasions.js` — references use USFM book codes, e.g. `"JHN 3:16"`, `"1CO 13:4-7"`.
-2. Run `npm run build:verses` (first run downloads the three Bibles from eBible.org into `sources/`).
-3. The script fails loudly if a reference is missing in any language. Commit `public/data/verses.json` along with your change.
+2. Run `npm run build:verses` (first run downloads the three Bibles from eBible.org into `sources/`). It fails loudly if a reference is missing in any language.
+3. Run `npm run build` to regenerate the pages (and `npm run build:og` if you added or renamed an occasion).
+4. Commit everything under `public/`.
+
+## Custom domain
+
+Connect the domain in Cloudflare (**Workers & Pages → a-word-in-season → Settings → Domains & Routes → Add → Custom domain**), then set `SITE_URL` in `public/js/site.js`, run `npm run build`, commit and push.
 
 ## Run locally
 
@@ -68,4 +91,4 @@ Manual deploy: `npx wrangler login` then `npm run deploy`.
 - **Hindi** — इंडियन रिवाइज्ड वर्जन (IRV) हिंदी – 2019, © 2017–2019 Bridge Connectivity Solutions, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 - **Telugu** — ఇండియన్ రివైజ్డ్ వెర్షన్ (IRV) – 2019, © 2017, 2019 Bridge Connectivity Solutions, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
-Texts from [eBible.org](https://ebible.org). `public/data/verses.json` is a derivative of these texts and is shared under CC BY-SA 4.0. Inline cross-reference notes are removed; verses a translation combines are shown with their full range.
+Texts from [eBible.org](https://ebible.org). `public/data/verses-*.json` are derivatives of these texts and are shared under CC BY-SA 4.0. Inline cross-reference notes are removed; verses a translation combines are shown with their full range.

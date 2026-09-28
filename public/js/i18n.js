@@ -71,6 +71,27 @@ const T = {
     te: "మీరు ఆఫ్‌లైన్‌లో ఉన్నారు — అన్నీ పని చేస్తాయి.",
   },
   textSize: { en: "Text size", hi: "अक्षर का आकार", te: "అక్షర పరిమాణం" },
+  home: { en: "Home", hi: "मुख पृष्ठ", te: "హోమ్" },
+  breadcrumb: { en: "Breadcrumb", hi: "पथ", te: "మార్గం" },
+  related: { en: "Related occasions", hi: "संबंधित अवसर", te: "సంబంధిత సందర్భాలు" },
+  toDark: { en: "Switch to dark theme", hi: "गहरी थीम चुनें", te: "ముదురు థీమ్‌కు మార్చండి" },
+  toLight: { en: "Switch to light theme", hi: "हल्की थीम चुनें", te: "లేత థీమ్‌కు మార్చండి" },
+  // {name} is replaced with the dedicatee's name.
+  builtFor: {
+    en: "Lovingly built for {name}",
+    hi: "{name} के लिए प्रेम से बनाया गया",
+    te: "{name} గారి కోసం ప్రేమతో రూపొందించబడింది",
+  },
+  savedLead: {
+    en: "Verses you star are kept here, on this device only.",
+    hi: "जिन वचनों पर आप तारा लगाते हैं वे यहाँ रहते हैं — केवल इस डिवाइस पर।",
+    te: "మీరు నక్షత్రం పెట్టిన వచనాలు ఇక్కడ ఉంటాయి — ఈ పరికరంలో మాత్రమే.",
+  },
+  notFoundLead: {
+    en: "This page doesn't exist — it may have moved. Every occasion is listed below.",
+    hi: "यह पेज मौजूद नहीं है — शायद यह हटा दिया गया है। सभी अवसर नीचे दिए गए हैं।",
+    te: "ఈ పేజీ లేదు — బహుశా మార్చబడి ఉండవచ్చు. అన్ని సందర్భాలు క్రింద ఉన్నాయి.",
+  },
 };
 
 export function t(key, lang) {

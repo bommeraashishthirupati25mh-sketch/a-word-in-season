@@ -20,6 +20,7 @@
   color-scheme: light;
 }
 
+/* Dark theme: follows the phone unless the visitor picks one with the header button. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #15110d;
@@ -35,6 +36,20 @@
     --shadow: none;
     color-scheme: dark;
   }
+}
+:root[data-theme="dark"] {
+  --bg: #15110d;
+    --surface: #1e1914;
+    --surface-2: #29221b;
+    --ink: #f1e8da;
+    --muted: #b2a491;
+    --line: #362d24;
+    --accent: #e0a08f;
+    --accent-hover: #ebb5a6;
+    --accent-ink: #2a1510;
+    --gold: #dbb45f;
+    --shadow: none;
+    color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
@@ -77,13 +92,18 @@ main { flex: 1; padding-top: 24px; padding-bottom: 48px; outline: none; }
 .nav { display: flex; gap: 4px; }
 .nav a { text-decoration: none; color: var(--muted); padding: 8px 10px; border-radius: 8px; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 6px; }
 .nav svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.install-btn {
-  display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--accent); color: var(--accent); background: transparent;
-  border-radius: 999px; padding: 6px 12px; font-weight: 600; font-size: 0.9rem; cursor: pointer;
-}
+
 .install-btn[hidden] { display: none; }
 .install-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
 .nav a:hover, .nav a[aria-current="page"] { color: var(--ink); background: var(--surface-2); }
+.icon-pill {
+  display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink); padding: 0;
+}
+.icon-pill:hover { border-color: var(--accent); color: var(--accent); }
+.icon-pill svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.skip { position: absolute; left: 8px; top: -60px; z-index: 100; background: var(--accent); color: var(--accent-ink); padding: 8px 14px; border-radius: 8px; }
+.skip:focus { top: 8px; }
 .site-lang select {
   background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px;
 }
@@ -105,8 +125,10 @@ main { flex: 1; padding-top: 24px; padding-bottom: 48px; outline: none; }
   .nav a:hover { background: none; }
   .nav a[aria-current="page"] { background: none; color: var(--accent); font-weight: 600; }
   .nav svg { width: 24px; height: 24px; }
-  .install-btn span { display: none; }
-  .install-btn { padding: 8px; }
+  .icon-pill.install-btn span { display: none; }
+  .icon-pill.install-btn { width: 38px; padding: 0; }
+  .credits { padding-bottom: 92px; } /* room for the floating Present button */
+  .topbar-inner { gap: 8px; }
 }
 
 /* Home */
@@ -144,7 +166,6 @@ main { flex: 1; padding-top: 24px; padding-bottom: 48px; outline: none; }
 @media (max-width: 480px) { .grid { grid-template-columns: 1fr 1fr; } .occ-card { padding: 14px 12px; } }
 
 /* Occasion page */
-.back { display: inline-flex; align-items: center; gap: 6px; text-decoration: none; color: var(--muted); font-size: 0.95rem; }
 .occ-head { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin: 12px 0 18px; }
 .occ-head .occ-icon { font-size: 2.4rem; margin: 0; }
 .occ-head h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.7rem, 5vw, 2.4rem); margin: 0; line-height: 1.2; }
@@ -228,8 +249,30 @@ main { flex: 1; padding-top: 24px; padding-bottom: 48px; outline: none; }
 .prose h1 { font-family: var(--serif); }
 .prose h2 { font-family: var(--serif); font-size: 1.25rem; margin-top: 28px; }
 
-.footer { color: var(--muted); font-size: 0.82rem; padding-top: 18px; padding-bottom: 28px; border-top: 1px solid var(--line); }
+.footer { color: var(--muted); font-size: 0.82rem; border-top: 1px solid var(--line); }
 .footer a { color: var(--muted); }
+.credits { padding-top: 14px; padding-bottom: 24px; }
+.credits p { margin: 0; }
+
+/* Dedication */
+.dedication { text-align: center; padding-top: 36px; padding-bottom: 28px; border-bottom: 1px solid var(--line); }
+.ded-mark { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: var(--accent); margin-bottom: 12px; }
+.ded-mark svg { width: 26px; height: 26px; fill: none; stroke: var(--accent-ink); stroke-width: 3; stroke-linecap: round; }
+.ded-line { font-family: var(--serif); font-size: 1.2rem; color: var(--ink); margin: 0; }
+.ded-line strong { color: var(--accent); font-weight: 600; }
+.ded-church { margin: 4px 0 0; text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.78rem; font-weight: 600; color: var(--gold); }
+.ded-verse { font-family: var(--serif); font-style: italic; max-width: 560px; margin: 16px auto 0; font-size: 0.95rem; line-height: 1.6; }
+.ded-verse cite { display: block; font-style: normal; font-size: 0.8rem; margin-top: 4px; color: var(--gold); }
+
+/* Breadcrumbs, page headings, related */
+.crumbs ol { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; font-size: 0.9rem; color: var(--muted); }
+.crumbs li + li::before { content: "›"; margin-right: 6px; color: var(--line); }
+.crumbs a { color: var(--muted); text-decoration: none; }
+.crumbs a:hover { color: var(--accent); text-decoration: underline; }
+.page-title { font-family: var(--serif); font-weight: 600; font-size: clamp(1.7rem, 5vw, 2.2rem); margin: 12px 0 4px; }
+.lead { color: var(--muted); margin: 0 0 18px; }
+.related { margin-top: 12px; }
+.verse.flat { border: 0; padding: 0; background: none; }
 
 .toast {
   display: flex; align-items: center; gap: 12px; max-width: calc(100vw - 32px); width: max-content;
@@ -347,4 +390,21 @@ main { flex: 1; padding-top: 24px; padding-bottom: 48px; outline: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}
+.brand { min-width: 0; }
+.brand-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.icon-pill.install-btn { display: inline-flex; align-items: center; justify-content: center; width: auto; gap: 6px; padding: 0 14px; border-color: var(--accent); color: var(--accent); font-weight: 600; font-size: 0.9rem; }
+.icon-pill.install-btn[hidden] { display: none; }
+@media (max-width: 720px) {
+  .icon-pill.install-btn { width: 38px; padding: 0; }
+  .site-lang select { padding: 6px 2px 6px 6px; font-size: 0.9rem; }
+}
+@media (max-width: 400px) {
+  .topbar-inner { gap: 6px; }
+  .brand { gap: 8px; }
+  .brand-mark { width: 26px; height: 26px; }
+  .brand-name { font-size: 1rem; }
+  .icon-pill, .icon-pill.install-btn { width: 36px; height: 36px; }
+  .site-lang select { padding: 6px 4px; }
 }

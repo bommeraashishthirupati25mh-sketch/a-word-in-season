@@ -12,6 +12,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { OCCASIONS, allRefs } from "../public/js/occasions.js";
 import { BOOKS } from "./books.mjs";
+import { DEDICATION } from "../public/js/site.js";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const srcDir = join(root, "sources");
@@ -73,7 +74,7 @@ for (const [lang, id] of Object.entries(SOURCES)) bibles[lang] = loadBible(lang,
 
 const out = {};
 const problems = [];
-for (const ref of allRefs()) {
+for (const ref of new Set([...allRefs(), DEDICATION.verse])) {
   const { book, ch, from, to } = parseRef(ref);
   if (!BOOKS[book]) problems.push(`${ref}: unknown book`);
   const entry = { ref: {}, text: {} };
@@ -94,5 +95,11 @@ if (problems.length) {
   process.exit(1);
 }
 
-writeFileSync(join(root, "public", "data", "verses.json"), JSON.stringify(out));
+// One file per language, so a visitor only downloads the languages they read.
+for (const lang of Object.keys(SOURCES)) {
+  const data = Object.fromEntries(Object.entries(out).map(([ref, e]) => [ref, { ref: e.ref[lang], text: e.text[lang] }]));
+  const file = join(root, "public", "data", `verses-${lang}.json`);
+  writeFileSync(file, JSON.stringify(data));
+  console.log(`  verses-${lang}.json  ${(JSON.stringify(data).length / 1024).toFixed(0)} KB`);
+}
 console.log(`Wrote ${Object.keys(out).length} passages for ${OCCASIONS.length} occasions.`);
