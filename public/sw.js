@@ -7,7 +7,7 @@
 //
 // VERSION and APP_SHELL are rewritten by `npm run build:pages` — a changed
 // VERSION makes every device download a fresh copy.
-const VERSION = "23138a1f37";
+const VERSION = "d2ad1d69ae";
 const APP_CACHE = `app-${VERSION}`;
 const FONT_CACHE = "fonts-v1";
 
@@ -44,9 +44,11 @@ const APP_SHELL = [
   "/icons/icon-512.png",
   "/icons/maskable-512.png",
   "/js/app.js",
+  "/js/card.js",
   "/js/i18n.js",
   "/js/occasions.js",
   "/js/podium.js",
+  "/js/share.js",
   "/js/site.js",
   "/js/views.js",
   "/manifest.webmanifest"

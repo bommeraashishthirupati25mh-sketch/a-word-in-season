@@ -259,6 +259,7 @@ export function occasionHTML(ctx, o) {
             ${ctx.langs.map((l) => verseTextHTML(ctx, o.kit.blessing, l)).join("")}
             <div class="icon-row">
               <button class="icon-btn" data-act="copy">${ICONS.copy}${tr("copy")}</button>
+              <button class="icon-btn" data-act="share">${ICONS.share}${tr("share")}</button>
               <button class="icon-btn" data-act="present-blessing" data-occ="${o.id}">${ICONS.present}${tr("present")}</button>
             </div>
           </div>

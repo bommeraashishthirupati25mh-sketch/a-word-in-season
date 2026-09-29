@@ -2,9 +2,9 @@
 // takes over for in-page navigation, language and theme choices, actions,
 // podium mode and offline support.
 
-import { LEGACY_IDS, occasionById } from "./occasions.js";
+import { OCCASIONS, LEGACY_IDS, occasionById } from "./occasions.js";
 import { LANGS, t } from "./i18n.js";
-import { LANG_ORDER, ICONS, pageFor, metaFor, pageHTML, homeHTML, dedicationHTML, plainText, occasionPath } from "./views.js";
+import { LANG_ORDER, ICONS, pageFor, metaFor, pageHTML, homeHTML, dedicationHTML, plainText } from "./views.js";
 
 const $ = (sel, el = document) => el.querySelector(sel);
 const view = $("#view");
@@ -199,16 +199,15 @@ async function copyText(text) {
   toast(tr("copied"));
 }
 
-async function shareText(text) {
-  if (navigator.share) {
-    try {
-      await navigator.share({ text });
-      return;
-    } catch (err) {
-      if (err.name === "AbortError") return;
-    }
+let sharer = null;
+async function openShare(ref) {
+  // Greeting defaults to the occasion being viewed, else the first occasion that uses this verse.
+  const occ = page.kind === "occasion" && page.occ.verses.includes(ref) ? page.occ : OCCASIONS.find((o) => o.verses.includes(ref)) ?? null;
+  if (!sharer) {
+    const { createShare } = await import("./share.js");
+    sharer = createShare({ state, verses: () => VERSES, ensureLangs, toast });
   }
-  window.open("https://wa.me/?text=" + encodeURIComponent(text), "_blank", "noopener");
+  sharer.open({ ref, occ });
 }
 
 let podium = null;
@@ -227,7 +226,7 @@ function slidesFor(occ, withKit) {
 }
 
 document.addEventListener("click", async (ev) => {
-  if (ev.target.closest("#podium")) return;
+  if (ev.target.closest("#podium, .sheet")) return;
 
   // In-site links: switch pages without a full reload.
   const a = ev.target.closest("a[href]");
@@ -271,10 +270,8 @@ document.addEventListener("click", async (ev) => {
   switch (btn.dataset.act) {
     case "copy":
       return copyText(plainText(ctx(), ref));
-    case "share": {
-      const url = page.kind === "occasion" ? location.origin + occasionPath(page.occ) : location.origin;
-      return shareText(plainText(ctx(), ref) + "\n\n" + url);
-    }
+    case "share":
+      return openShare(ref);
     case "save": {
       const i = state.saved.indexOf(ref);
       if (i >= 0) state.saved.splice(i, 1);

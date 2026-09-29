@@ -6,23 +6,23 @@ Verse text is quoted exactly from the source translations. The KJV is public dom
 
 ## Occasions
 
-- [Birthday](https://a-word-in-season.rently-campus.workers.dev/occasions/birthday): 10 verses for birthdays, e.g. Psalm 118:24, Psalm 139:13-14, Jeremiah 29:11
-- [Wedding](https://a-word-in-season.rently-campus.workers.dev/occasions/wedding): 12 verses for weddings, e.g. Genesis 2:24, 1 Corinthians 13:4-7, Ecclesiastes 4:9-12
-- [Engagement](https://a-word-in-season.rently-campus.workers.dev/occasions/engagement): 8 verses for engagements, e.g. Proverbs 19:14, Amos 3:3, Song of Solomon 8:6
-- [Wedding Anniversary](https://a-word-in-season.rently-campus.workers.dev/occasions/wedding-anniversary): 9 verses for wedding anniversaries, e.g. 1 Samuel 7:12, Lamentations 3:22-23, Psalm 126:3
-- [Baptism](https://a-word-in-season.rently-campus.workers.dev/occasions/baptism): 10 verses for baptism services, e.g. Matthew 28:19-20, Romans 6:4, Acts 2:38
-- [Baby Dedication](https://a-word-in-season.rently-campus.workers.dev/occasions/baby-dedication): 10 verses for baby dedications, e.g. 1 Samuel 1:27-28, Psalm 127:3, Psalm 139:13-14
-- [Funeral & Comfort](https://a-word-in-season.rently-campus.workers.dev/occasions/funeral-and-comfort): 12 verses for funerals and times of grief, e.g. John 11:25-26, John 14:1-3, Psalm 23:1-4
-- [Housewarming](https://a-word-in-season.rently-campus.workers.dev/occasions/housewarming): 8 verses for housewarmings and new homes, e.g. Joshua 24:15, Psalm 127:1, Proverbs 24:3-4
-- [Exams & Graduation](https://a-word-in-season.rently-campus.workers.dev/occasions/exams-and-graduation): 10 verses for exams and graduations, e.g. Proverbs 1:7, James 1:5, Philippians 4:13
-- [New Job & Business](https://a-word-in-season.rently-campus.workers.dev/occasions/new-job-and-business): 9 verses for a new job or business, e.g. Proverbs 16:3, Deuteronomy 8:18, Colossians 3:23-24
-- [Farewell & Travel](https://a-word-in-season.rently-campus.workers.dev/occasions/farewell-and-travel): 10 verses for farewells and journeys, e.g. Numbers 6:24-26, Psalm 121:7-8, Genesis 28:15
-- [Healing & Sickness](https://a-word-in-season.rently-campus.workers.dev/occasions/healing-and-sickness): 10 verses for healing and times of sickness, e.g. James 5:14-15, Jeremiah 17:14, Isaiah 53:5
-- [Ordination & Ministry](https://a-word-in-season.rently-campus.workers.dev/occasions/ordination-and-ministry): 10 verses for ordinations and ministry commissioning, e.g. Isaiah 6:8, Jeremiah 1:7-8, 2 Timothy 4:2
-- [Thanksgiving & Harvest](https://a-word-in-season.rently-campus.workers.dev/occasions/thanksgiving-and-harvest): 10 verses for thanksgiving and harvest festivals, e.g. Psalm 100:4-5, 1 Thessalonians 5:16-18, Psalm 107:1
-- [Christmas](https://a-word-in-season.rently-campus.workers.dev/occasions/christmas): 10 verses for Christmas, e.g. Isaiah 9:6, Luke 2:10-11, Matthew 1:23
-- [Good Friday & Easter](https://a-word-in-season.rently-campus.workers.dev/occasions/good-friday-and-easter): 10 verses for Good Friday and Easter, e.g. Isaiah 53:5, Romans 5:8, John 19:30
-- [New Year](https://a-word-in-season.rently-campus.workers.dev/occasions/new-year): 10 verses for the New Year, e.g. Lamentations 3:22-23, Isaiah 43:18-19, Philippians 3:13-14
+- [Birthday](https://a-word-in-season.rently-campus.workers.dev/occasions/birthday): 27 verses for birthdays, e.g. Psalm 118:24, Psalm 139:13-14, Jeremiah 29:11
+- [Wedding](https://a-word-in-season.rently-campus.workers.dev/occasions/wedding): 28 verses for weddings, e.g. Genesis 2:24, 1 Corinthians 13:4-7, Ecclesiastes 4:9-12
+- [Engagement](https://a-word-in-season.rently-campus.workers.dev/occasions/engagement): 23 verses for engagements, e.g. Proverbs 19:14, Amos 3:3, Song of Solomon 8:6
+- [Wedding Anniversary](https://a-word-in-season.rently-campus.workers.dev/occasions/wedding-anniversary): 23 verses for wedding anniversaries, e.g. 1 Samuel 7:12, Lamentations 3:22-23, Psalm 126:3
+- [Baptism](https://a-word-in-season.rently-campus.workers.dev/occasions/baptism): 26 verses for baptism services, e.g. Matthew 28:19-20, Romans 6:4, Acts 2:38
+- [Baby Dedication](https://a-word-in-season.rently-campus.workers.dev/occasions/baby-dedication): 25 verses for baby dedications, e.g. 1 Samuel 1:27-28, Psalm 127:3, Psalm 139:13-14
+- [Funeral & Comfort](https://a-word-in-season.rently-campus.workers.dev/occasions/funeral-and-comfort): 29 verses for funerals and times of grief, e.g. John 11:25-26, John 14:1-3, Psalm 23:1-4
+- [Housewarming](https://a-word-in-season.rently-campus.workers.dev/occasions/housewarming): 22 verses for housewarmings and new homes, e.g. Joshua 24:15, Psalm 127:1, Proverbs 24:3-4
+- [Exams & Graduation](https://a-word-in-season.rently-campus.workers.dev/occasions/exams-and-graduation): 26 verses for exams and graduations, e.g. Proverbs 1:7, James 1:5, Philippians 4:13
+- [New Job & Business](https://a-word-in-season.rently-campus.workers.dev/occasions/new-job-and-business): 24 verses for a new job or business, e.g. Proverbs 16:3, Deuteronomy 8:18, Colossians 3:23-24
+- [Farewell & Travel](https://a-word-in-season.rently-campus.workers.dev/occasions/farewell-and-travel): 27 verses for farewells and journeys, e.g. Numbers 6:24-26, Psalm 121:7-8, Genesis 28:15
+- [Healing & Sickness](https://a-word-in-season.rently-campus.workers.dev/occasions/healing-and-sickness): 26 verses for healing and times of sickness, e.g. James 5:14-15, Jeremiah 17:14, Isaiah 53:5
+- [Ordination & Ministry](https://a-word-in-season.rently-campus.workers.dev/occasions/ordination-and-ministry): 28 verses for ordinations and ministry commissioning, e.g. Isaiah 6:8, Jeremiah 1:7-8, 2 Timothy 4:2
+- [Thanksgiving & Harvest](https://a-word-in-season.rently-campus.workers.dev/occasions/thanksgiving-and-harvest): 26 verses for thanksgiving and harvest festivals, e.g. Psalm 100:4-5, 1 Thessalonians 5:16-18, Psalm 107:1
+- [Christmas](https://a-word-in-season.rently-campus.workers.dev/occasions/christmas): 27 verses for Christmas, e.g. Isaiah 9:6, Luke 2:10-11, Matthew 1:23
+- [Good Friday & Easter](https://a-word-in-season.rently-campus.workers.dev/occasions/good-friday-and-easter): 29 verses for Good Friday and Easter, e.g. Isaiah 53:5, Romans 5:8, John 19:30
+- [New Year](https://a-word-in-season.rently-campus.workers.dev/occasions/new-year): 29 verses for the New Year, e.g. Lamentations 3:22-23, Isaiah 43:18-19, Philippians 3:13-14
 
 ## About
 
