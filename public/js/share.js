@@ -1,5 +1,5 @@
 // Share dialog: send a verse as text, a designed image card, or a short
-// animated video card — with an occasion greeting and Bro. Raj Timothy's name.
+// animated video card — with an occasion greeting and Raj Timothy's name.
 // Loaded on first use.
 
 import { OCCASIONS } from "./occasions.js";

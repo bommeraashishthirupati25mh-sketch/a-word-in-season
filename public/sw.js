@@ -7,7 +7,7 @@
 //
 // VERSION and APP_SHELL are rewritten by `npm run build:pages` — a changed
 // VERSION makes every device download a fresh copy.
-const VERSION = "d2ad1d69ae";
+const VERSION = "d096da03ff";
 const APP_CACHE = `app-${VERSION}`;
 const FONT_CACHE = "fonts-v1";
 

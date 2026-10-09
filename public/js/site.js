@@ -7,7 +7,7 @@ export const SITE_URL = "https://a-word-in-season.rently-campus.workers.dev";
 export const SITE_NAME = "A Word in Season";
 
 export const DEDICATION = {
-  name: "Bro. Raj Timothy",
+  name: "Raj Timothy",
   church: "Smyrna House of Fellowship",
   // "Preach the word; be instant in season, out of season" — fitting for a site named A Word in Season.
   verse: "2TI 4:2",

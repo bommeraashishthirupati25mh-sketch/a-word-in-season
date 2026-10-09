@@ -1,0 +1,111 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1791576394158,
+  "projectRoot": "C:\\Users\\ashis\\code\\a-word-in-season",
+  "techStack": {
+    "languages": [
+      {
+        "name": "JavaScript/TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "package.json"
+        ]
+      }
+    ],
+    "frameworks": [],
+    "packageManager": "npm",
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": "npm run build",
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": "npm run dev",
+    "scripts": {
+      "build": "node scripts/build-pages.mjs",
+      "build:verses": "node scripts/build-verses.mjs",
+      "build:pages": "node scripts/build-pages.mjs",
+      "build:og": "node scripts/make-og.mjs",
+      "build:icons": "node scripts/make-icons.mjs",
+      "dev": "wrangler dev",
+      "deploy": "npm run build && wrangler deploy",
+      "check": "node scripts/check-site.mjs"
+    }
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "public",
+      "scripts"
+    ],
+    "gitBranches": null
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "public": {
+      "path": "public",
+      "purpose": "Public files",
+      "fileCount": 11,
+      "lastAccessed": 1791576394008,
+      "keyFiles": [
+        "404.html",
+        "about.html",
+        "favicon.svg",
+        "index.html",
+        "llms.txt"
+      ]
+    },
+    "scripts": {
+      "path": "scripts",
+      "purpose": "Build/utility scripts",
+      "fileCount": 6,
+      "lastAccessed": 1791576394009,
+      "keyFiles": [
+        "books.mjs",
+        "build-pages.mjs",
+        "build-verses.mjs",
+        "check-site.mjs",
+        "make-icons.mjs"
+      ]
+    },
+    "sources": {
+      "path": "sources",
+      "purpose": null,
+      "fileCount": 3,
+      "lastAccessed": 1791576394010,
+      "keyFiles": [
+        "eng-kjv2006_vpl.sql",
+        "hin2017_vpl.sql",
+        "tel2017_vpl.sql"
+      ]
+    },
+    "public\\data": {
+      "path": "public\\data",
+      "purpose": "Data files",
+      "fileCount": 3,
+      "lastAccessed": 1791576394012,
+      "keyFiles": [
+        "verses-en.json",
+        "verses-hi.json",
+        "verses-te.json"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "",
+      "accessCount": 1,
+      "lastAccessed": 1791576452670,
+      "type": "directory"
+    }
+  ],
+  "userDirectives": []
+}

@@ -1,6 +1,6 @@
 # A Word in Season
 
-> Hand-picked Bible verses for church occasions — birthdays, weddings, baptisms, funerals, housewarmings and more — each with an opening prayer, three talking points and a closing blessing. Verses are shown in English (King James Version), Hindi and Telugu (Indian Revised Version, 2019). Built for Bro. Raj Timothy, Smyrna House of Fellowship.
+> Hand-picked Bible verses for church occasions — birthdays, weddings, baptisms, funerals, housewarmings and more — each with an opening prayer, three talking points and a closing blessing. Verses are shown in English (King James Version), Hindi and Telugu (Indian Revised Version, 2019). Built for Raj Timothy, Smyrna House of Fellowship.
 
 Verse text is quoted exactly from the source translations. The KJV is public domain; the Hindi and Telugu IRV are © Bridge Connectivity Solutions under CC BY-SA 4.0 (via eBible.org) and must be attributed when reused.
 

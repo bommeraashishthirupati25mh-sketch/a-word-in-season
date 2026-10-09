@@ -4,7 +4,7 @@ Bible verses, an opening prayer, talking points and a closing blessing for every
 
 > “A word spoken in due season, how good is it!” — Proverbs 15:23
 
-*Lovingly built for Bro. Raj Timothy, Smyrna House of Fellowship.*
+*Lovingly built for Raj Timothy, Smyrna House of Fellowship.*
 
 ## Features
 
@@ -12,7 +12,7 @@ Bible verses, an opening prayer, talking points and a closing blessing for every
 - **Speaker's kit** per occasion: opening prayer, three talking points linked to verses, and a closing blessing
 - **Three languages**, shown alone or side by side (KJV, Hindi IRV, Telugu IRV); site interface in all three
 - **Podium mode**: large type that auto-fits the screen, tap/swipe/arrow keys or a presentation clicker, `B` to blank the screen, `+`/`−` text size, light/dark, keeps the phone screen awake
-- **Share as text, image or video**: greeting cards with an occasion greeting, optional name, 1–3 languages and five designs, signed "From Bro. Raj Timothy, Smyrna House of Fellowship"
+- **Share as text, image or video**: greeting cards with an occasion greeting, optional name, 1–3 languages and five designs, signed "From Raj Timothy, Smyrna House of Fellowship"
 - Copy, share (WhatsApp / phone share sheet), save favourites on the device, search in any language, verse of the day
 - **Built for phones**: bottom tab bar, large tap targets, floating *Present all* button, adjustable reading size
 - **Installable app (PWA)** that works fully **offline** after the first visit — handy in church halls with poor signal
